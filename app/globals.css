@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fog: #f3f5f4;
+  --color-paper: #ffffff;
+  --color-ink: #1f2b33;
+  --color-muted: #5e6b73;
+  --color-rule: #d9dfdc;
+  --color-sea: #28585e;
+  --color-sea-soft: #a9c4c1;
+  --color-sea-wash: #e6efee;
+  --color-plum: #6b4a8b;
+  --color-plum-wash: #efe9f5;
+  --color-gain: #2e7a4e;
+  --color-loss: #b0413a;
+  --font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  background: var(--color-fog);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The accountant's double rule under a final total */
+.bottom-line {
+  border-bottom: 3px double var(--color-ink);
+  padding-bottom: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-plum);
+  outline-offset: 2px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="range"] {
+  accent-color: var(--color-sea);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

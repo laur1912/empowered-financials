@@ -1,0 +1,218 @@
+{
+ "2024-01": {
+  "practiceNet": 91099.98467,
+  "corporateTotal": 58284.75,
+  "revenue": 253470.0,
+  "sessions": 1874.0
+ },
+ "2024-02": {
+  "practiceNet": 87721.57707,
+  "corporateTotal": 53493.15,
+  "revenue": 254380.0,
+  "sessions": 1881.0
+ },
+ "2024-03": {
+  "practiceNet": 84658.6856,
+  "corporateTotal": 66142.185,
+  "revenue": 242940.0,
+  "sessions": 1793.0
+ },
+ "2024-04": {
+  "practiceNet": 99484.6096,
+  "corporateTotal": 48117.0,
+  "revenue": 273100.0,
+  "sessions": 2025.0
+ },
+ "2024-05": {
+  "practiceNet": 95428.8306,
+  "corporateTotal": 62240.0,
+  "revenue": 263740.0,
+  "sessions": 1953.0
+ },
+ "2024-06": {
+  "practiceNet": 82371.3036,
+  "corporateTotal": 56240.0,
+  "revenue": 236310.0,
+  "sessions": 1742.0
+ },
+ "2024-07": {
+  "practiceNet": 96469.8996,
+  "corporateTotal": 56240.0,
+  "revenue": 266276.0,
+  "sessions": 1970.0
+ },
+ "2024-08": {
+  "practiceNet": 88395.8256,
+  "corporateTotal": 56590.0,
+  "revenue": 245866.0,
+  "sessions": 1813.0
+ },
+ "2024-09": {
+  "practiceNet": 87375.5996,
+  "corporateTotal": 58736.5,
+  "revenue": 243526.0,
+  "sessions": 1795.0
+ },
+ "2024-10": {
+  "practiceNet": 107310.5041,
+  "corporateTotal": 58736.5,
+  "revenue": 287726.0,
+  "sessions": 2135.0
+ },
+ "2024-11": {
+  "practiceNet": 88076.53667,
+  "corporateTotal": 58736.5,
+  "revenue": 247946.0,
+  "sessions": 1829.0
+ },
+ "2024-12": {
+  "practiceNet": 85890.31467,
+  "corporateTotal": 58736.5,
+  "revenue": 238716.0,
+  "sessions": 1758.0
+ },
+ "2025-01": {
+  "practiceNet": 110899.0396,
+  "corporateTotal": 67350.665,
+  "revenue": 287076.0,
+  "sessions": 2130.0
+ },
+ "2025-02": {
+  "practiceNet": 103723.8519,
+  "corporateTotal": 69917.915,
+  "revenue": 272516.0,
+  "sessions": 2018.0
+ },
+ "2025-03": {
+  "practiceNet": 113611.2004,
+  "corporateTotal": 69443.565,
+  "revenue": 292926.0,
+  "sessions": 2175.0
+ },
+ "2025-04": {
+  "practiceNet": 131658.306,
+  "corporateTotal": 68943.565,
+  "revenue": 329586.0,
+  "sessions": 2457.0
+ },
+ "2025-05": {
+  "practiceNet": 113744.2847,
+  "corporateTotal": 69396.589,
+  "revenue": 293316.0,
+  "sessions": 2178.0
+ },
+ "2025-06": {
+  "practiceNet": 114429.8047,
+  "corporateTotal": 68711.589,
+  "revenue": 287215.0,
+  "sessions": 2083.0
+ },
+ "2025-07": {
+  "practiceNet": 116682.5553,
+  "corporateTotal": 66861.589,
+  "revenue": 301910.0,
+  "sessions": 2270.0
+ },
+ "2025-08": {
+  "practiceNet": 99177.19,
+  "corporateTotal": 66861.589,
+  "revenue": 258552.0,
+  "sessions": 1944.0
+ },
+ "2025-09": {
+  "practiceNet": 108656.786,
+  "corporateTotal": 63183.589,
+  "revenue": 275576.0,
+  "sessions": 2072.0
+ },
+ "2025-10": {
+  "practiceNet": 116261.046,
+  "corporateTotal": 63533.589,
+  "revenue": 299516.0,
+  "sessions": 2252.0
+ },
+ "2025-11": {
+  "practiceNet": 97925.474,
+  "corporateTotal": 63683.589,
+  "revenue": 255626.0,
+  "sessions": 1922.0
+ },
+ "2025-12": {
+  "practiceNet": 101990.676,
+  "corporateTotal": 63683.589,
+  "revenue": 260414.0,
+  "sessions": 1958.0
+ },
+ "2026-01": {
+  "practiceNet": 96289.663,
+  "corporateTotal": 59273.139,
+  "revenue": 249242.0,
+  "sessions": 1874.0
+ },
+ "2026-02": {
+  "practiceNet": 96572.049,
+  "corporateTotal": 64059.789,
+  "revenue": 248976.0,
+  "sessions": 1872.0
+ },
+ "2026-03": {
+  "practiceNet": 101650.762,
+  "corporateTotal": 60357.189,
+  "revenue": 255493.0,
+  "sessions": 1921.0
+ },
+ "2026-04": {
+  "practiceNet": 102532.2813,
+  "corporateTotal": 60357.189,
+  "revenue": 255227.0,
+  "sessions": 1919.0
+ },
+ "2026-05": {
+  "practiceNet": 103541.94,
+  "corporateTotal": 44022.189,
+  "revenue": 240000.0,
+  "sessions": 1700.0
+ },
+ "2026-06": {
+  "practiceNet": 113494.1567,
+  "corporateTotal": 60357.189,
+  "revenue": 259000.0,
+  "sessions": 1800.0
+ },
+ "2026-07": {
+  "practiceNet": 93282.47333,
+  "corporateTotal": 60357.189,
+  "revenue": 239400.0,
+  "sessions": 1800.0
+ },
+ "2026-08": {
+  "practiceNet": 102731.5067,
+  "corporateTotal": 60357.189,
+  "revenue": 257000.0,
+  "sessions": 1900.0
+ },
+ "2026-09": {
+  "practiceNet": 110948.6093,
+  "corporateTotal": 60357.189,
+  "revenue": 279034.0,
+  "sessions": 2098.0
+ },
+ "2026-10": {
+  "practiceNet": 113724.7787,
+  "corporateTotal": 60357.189,
+  "revenue": 285418.0,
+  "sessions": 2146.0
+ },
+ "2026-11": {
+  "practiceNet": 117840.4673,
+  "corporateTotal": 60357.189,
+  "revenue": 298186.0,
+  "sessions": 2242.0
+ },
+ "2026-12": {
+  "practiceNet": 126671.9193,
+  "corporateTotal": 60357.189,
+  "revenue": 309624.0,
+  "sessions": 2328.0
+ }
+}

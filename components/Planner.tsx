@@ -43,7 +43,10 @@ export default function Planner() {
     fetch("/api/data")
       .then(async (r) => {
         if (r.status === 401) return window.location.reload();
-        if (!r.ok) throw new Error(`Server responded ${r.status}`);
+        if (!r.ok) {
+          const j = await r.json().catch(() => ({}));
+          throw new Error(j.error ?? `Server responded ${r.status}`);
+        }
         const j = await r.json();
         dataRef.current = j.data;
         revRef.current = j.rev;

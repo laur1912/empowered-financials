@@ -44,7 +44,7 @@ export default function PlanTab({
 
   return (
     <div className="grid gap-10">
-      <section aria-label="Planning tools" className="grid gap-4 md:grid-cols-2">
+      <section aria-label="Planning tools" className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <ToolCard
           title="Should we hire or fill open spots?"
           body="Enter today's openings and see whether to grow into them or start hiring, and when."
@@ -58,6 +58,13 @@ export default function PlanTab({
           action="Try a hire"
           onClick={() => openTool("hiring")}
           tone="plum"
+        />
+        <ToolCard
+          title="How much of a rate increase to pass on?"
+          body="Split a higher average session rate between therapist pay and profit, and compare options side by side."
+          action="Split the increase"
+          onClick={() => openTool("raise")}
+          tone="sea"
         />
       </section>
 

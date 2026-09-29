@@ -11,6 +11,7 @@ import ActualsTab from "./ActualsTab";
 import CostsTab, { type ToolId } from "./CostsTab";
 import HiringCalculator from "./HiringCalculator";
 import RoomToGrow from "./RoomToGrow";
+import RaiseSplit from "./RaiseSplit";
 
 type SaveState = "saved" | "unsaved" | "saving" | "error" | "conflict";
 type Tab = "plan" | "breakdown" | "actuals" | "costs";
@@ -434,6 +435,15 @@ export default function Planner() {
 
       {tool === "hiring" && (
         <HiringCalculator data={data} scenario={scenario} updatePlan={updatePlan} onClose={() => setTool(null)} />
+      )}
+      {tool === "raise" && baseline && (
+        <RaiseSplit
+          data={data}
+          scenario={scenario}
+          baseline={baseline}
+          updatePlan={updatePlan}
+          onClose={() => setTool(null)}
+        />
       )}
       {tool === "capacity" && (
         <RoomToGrow

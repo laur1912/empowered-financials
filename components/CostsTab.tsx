@@ -10,7 +10,7 @@ import Sheet from "./Sheet";
 import Spark from "./Spark";
 
 type PanelId = LineGroup | "marketing" | "rates";
-export type ToolId = "hiring" | "capacity";
+export type ToolId = "hiring" | "capacity" | "raise";
 
 const MARKETING = ["mktNewHire", "mktMaintenance", "mktOpenSpots"];
 

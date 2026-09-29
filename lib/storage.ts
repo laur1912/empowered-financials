@@ -1,5 +1,6 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import seed from "./seed-data.json";
+import { migrate } from "./migrate";
 import type { AppData } from "./types";
 
 // One row holds the whole planner. See supabase/schema.sql.
@@ -26,13 +27,13 @@ const g = globalThis as unknown as { __efMemory?: Stored };
 export const storageKind: StorageKind = db ? "supabase" : "memory";
 
 function fresh(): Stored {
-  return { data: JSON.parse(JSON.stringify(seed)) as AppData, rev: 0 };
+  return { data: migrate(seed as unknown as AppData), rev: 0 };
 }
 
 async function readRow(client: SupabaseClient): Promise<Stored | null> {
   const { data, error } = await client.from(TABLE).select("data, rev").eq("id", ROW_ID).maybeSingle();
   if (error) throw new Error(`Supabase read failed: ${error.message}`);
-  return data ? { data: data.data as AppData, rev: data.rev as number } : null;
+  return data ? { data: migrate(data.data as AppData), rev: data.rev as number } : null;
 }
 
 export async function load(): Promise<Stored> {

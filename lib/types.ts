@@ -7,7 +7,7 @@ export type LineGroup =
   | "corporatePayroll"
   | "corporateOverhead";
 
-export type ComputedKind = "directPay" | "ceu" | "mktNewHire" | "mktMaintenance";
+export type ComputedKind = "directPay" | "ceu" | "mktNewHire" | "mktMaintenance" | "mktOpenSpots";
 
 export interface LineDef {
   id: string;
@@ -41,11 +41,17 @@ export interface Assumptions extends Rates {
   sessions: SessionAverages;
   newHiresJoinAs: Role;
   departuresFrom: Role;
+  /** Months for a new hire to reach a full caseload (clients are added gradually) */
+  rampMonths: number;
+  /** Average sessions one client has per month */
+  sessionsPerClient: number;
 }
 
 export interface PlanMonth {
   hires: number;
   departures: number;
+  /** Extra clients to recruit this month to fill open spots on existing schedules */
+  extraClients?: number;
   sessionsOverride?: number | null;
   fullTime?: number | null;
   partTime?: number | null;
@@ -82,7 +88,7 @@ export interface Scenario {
 }
 
 export interface AppData {
-  version: 1;
+  version: 1 | 2;
   months: MonthKey[];
   lines: LineDef[];
   actuals: Record<MonthKey, MonthActual>;
@@ -119,4 +125,8 @@ export interface MonthResult {
   totalOverhead: number;
   ebitda: number;
   margin: number;
+  /** All marketing lines together */
+  adSpend: number;
+  /** Clients the plan needs to bring in this month */
+  clientsToRecruit: number;
 }

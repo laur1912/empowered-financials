@@ -55,6 +55,7 @@ export default function BreakdownTab({
     ...linesOf("corporateOverhead", "co"),
     { id: "ebitda", label: "Company profit (EBITDA)", get: (r) => r.ebitda, emphasis: "bottom" },
     { id: "margin", label: "Profit margin", get: (r) => r.margin, kind: "pct" },
+    { id: "ad", label: "Ad spend (inside practice overhead)", get: (r) => r.adSpend },
     { id: "tp", label: "Total payroll (practice + corporate)", get: (r) => r.totalPayroll },
     { id: "to", label: "Total overhead (practice + corporate)", get: (r) => r.totalOverhead },
   ];

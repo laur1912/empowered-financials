@@ -21,7 +21,7 @@ export async function GET() {
 export async function PUT(req: Request) {
   if (!(await isAuthed())) return NextResponse.json({ error: "Sign in first." }, { status: 401 });
   const body = (await req.json().catch(() => null)) as { data: AppData; rev: number } | null;
-  if (!body?.data || typeof body.rev !== "number" || body.data.version !== 1) {
+  if (!body?.data || typeof body.rev !== "number" || body.data.version !== 2) {
     return NextResponse.json({ error: "Malformed save request." }, { status: 400 });
   }
   try {

@@ -8,7 +8,9 @@ import BottomLine from "./BottomLine";
 import PlanTab from "./PlanTab";
 import BreakdownTab from "./BreakdownTab";
 import ActualsTab from "./ActualsTab";
-import CostsTab from "./CostsTab";
+import CostsTab, { type ToolId } from "./CostsTab";
+import HiringCalculator from "./HiringCalculator";
+import RoomToGrow from "./RoomToGrow";
 
 type SaveState = "saved" | "unsaved" | "saving" | "error" | "conflict";
 type Tab = "plan" | "breakdown" | "actuals" | "costs";
@@ -17,7 +19,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: "plan", label: "Plan" },
   { id: "breakdown", label: "Monthly breakdown" },
   { id: "actuals", label: "Enter actuals" },
-  { id: "costs", label: "Costs & rates" },
+  { id: "costs", label: "Costs" },
 ];
 
 export default function Planner() {
@@ -30,6 +32,7 @@ export default function Planner() {
   const [tab, setTab] = useState<Tab>("plan");
   const [naming, setNaming] = useState<null | "new" | "rename">(null);
   const [nameText, setNameText] = useState("");
+  const [tool, setTool] = useState<ToolId | null>(null);
 
   const dataRef = useRef<AppData | null>(null);
   const revRef = useRef(0);
@@ -405,6 +408,7 @@ export default function Planner() {
                   if (s) s.notes = notes;
                 })
               }
+              openTool={setTool}
             />
           )}
           {tab === "breakdown" && (
@@ -414,10 +418,31 @@ export default function Planner() {
             <ActualsTab data={data} plan={scenario.plan} year={year} results={results} update={update} />
           )}
           {tab === "costs" && (
-            <CostsTab data={data} scenario={scenario} year={year} results={results} update={update} updatePlan={updatePlan} />
+            <CostsTab
+              data={data}
+              scenario={scenario}
+              year={year}
+              results={results}
+              update={update}
+              updatePlan={updatePlan}
+              openTool={setTool}
+            />
           )}
         </div>
       </main>
+
+      {tool === "hiring" && (
+        <HiringCalculator data={data} scenario={scenario} updatePlan={updatePlan} onClose={() => setTool(null)} />
+      )}
+      {tool === "capacity" && (
+        <RoomToGrow
+          data={data}
+          scenario={scenario}
+          updatePlan={updatePlan}
+          onClose={() => setTool(null)}
+          openHiring={() => setTool("hiring")}
+        />
+      )}
     </div>
   );
 }

@@ -5,12 +5,12 @@ import { count, moneyK } from "@/lib/format";
 import { monthLabel } from "@/lib/model";
 import type { AppData, MonthResult, Plan, PlanMonth, Scenario, SessionAverages } from "@/lib/types";
 import { NumField, Stepper } from "./Inputs";
+import type { ToolId } from "./CostsTab";
 
 const LEVERS: { key: keyof SessionAverages; label: string; hint: string; min: number; max: number }[] = [
   { key: "fullTime", label: "Full-time therapist", hint: "Sessions per month, each", min: 30, max: 110 },
   { key: "partTime", label: "Part-time therapist", hint: "Sessions per month, each", min: 10, max: 80 },
   { key: "executive", label: "Executive", hint: "Sessions per month, each", min: 0, max: 200 },
-  { key: "newHire", label: "New hire, first month", hint: "Sessions in the month they start", min: 0, max: 40 },
 ];
 
 export default function PlanTab({
@@ -21,6 +21,7 @@ export default function PlanTab({
   results,
   updatePlan,
   updateNotes,
+  openTool,
 }: {
   data: AppData;
   scenario: Scenario;
@@ -29,6 +30,7 @@ export default function PlanTab({
   results: MonthResult[];
   updatePlan: (fn: (p: Plan) => void) => void;
   updateNotes: (notes: string) => void;
+  openTool: (t: ToolId) => void;
 }) {
   const a = scenario.plan.assumptions;
   const months = monthsOfYear(data.months, year);
@@ -42,6 +44,23 @@ export default function PlanTab({
 
   return (
     <div className="grid gap-10">
+      <section aria-label="Planning tools" className="grid gap-4 md:grid-cols-2">
+        <ToolCard
+          title="Should we hire or fill open spots?"
+          body="Enter today's openings and see whether to grow into them or start hiring, and when."
+          action="Check our room to grow"
+          onClick={() => openTool("capacity")}
+          tone="sea"
+        />
+        <ToolCard
+          title="What will hiring cost?"
+          body="Pick a number of hires and a month. See ad spend, pay, and profit, and when it pays for itself."
+          action="Try a hire"
+          onClick={() => openTool("hiring")}
+          tone="plum"
+        />
+      </section>
+
       <section aria-labelledby="levers" className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,3fr)]">
         <div>
           <h2 id="levers" className="text-lg font-semibold">
@@ -76,6 +95,29 @@ export default function PlanTab({
                 <p className="text-xs text-muted">{l.hint}</p>
               </div>
             ))}
+            <div>
+              <div className="flex items-baseline justify-between gap-2">
+                <label htmlFor="lever-ramp" className="text-sm font-medium">
+                  New hire, months to fill up
+                </label>
+                <NumField
+                  ariaLabel="Months for a new hire to fill up"
+                  value={a.rampMonths}
+                  onCommit={(v) => updatePlan((p) => void (p.assumptions.rampMonths = Math.max(1, Math.round(v ?? 1))))}
+                  className="w-16 font-semibold"
+                />
+              </div>
+              <input
+                id="lever-ramp"
+                type="range"
+                min={1}
+                max={8}
+                value={a.rampMonths}
+                onChange={(e) => updatePlan((p) => void (p.assumptions.rampMonths = Number(e.target.value)))}
+                className="mt-2 w-full"
+              />
+              <p className="text-xs text-muted">They take on clients gradually until they&apos;re full</p>
+            </div>
           </div>
         </div>
 
@@ -130,10 +172,10 @@ export default function PlanTab({
           Hiring and headcount, {year}
         </h2>
         <p className="mt-1 max-w-prose text-sm text-muted">
-          New hires join as {a.newHiresJoinAs === "partTime" ? "part-time" : "full-time"} the month after they start;
-          people leaving come off {a.departuresFrom === "partTime" ? "part-time" : "full-time"} the month after. Type
-          in a headcount or session number to override the calculation. Clear the box to go back to the calculated
-          number.
+          New hires fill up over {Math.round(a.rampMonths)} months and count as{" "}
+          {a.newHiresJoinAs === "partTime" ? "part-time" : "full-time"}. Extra clients fill open spots on current
+          schedules; both add to ad spend. Type over a headcount or session number to set it yourself, and clear the box
+          to go back to the calculation.
         </p>
         {openMonths.length === 0 && (
           <p className="mt-3 text-sm text-plum">Every month in {year} has actual numbers, so there&apos;s nothing to plan here.</p>
@@ -187,6 +229,39 @@ export default function PlanTab({
                         disabled={r.isActual}
                         onChange={(v) => setMonth(m, { departures: v })}
                       />
+                    </Cell>
+                  );
+                })}
+              </GridRow>
+              <GridRow label="Extra clients for open spots">
+                {months.map((m) => {
+                  const r = byMonth.get(m)!;
+                  const v = scenario.plan.months[m]?.extraClients ?? 0;
+                  return (
+                    <Cell key={m} actual={r.isActual}>
+                      {r.isActual ? (
+                        <span className="num block text-center text-muted">–</span>
+                      ) : (
+                        <NumField
+                          ariaLabel={`Extra clients in ${monthLabel(m, "long")}`}
+                          value={v || null}
+                          placeholder="0"
+                          allowEmpty
+                          align="center"
+                          onCommit={(x) => setMonth(m, { extraClients: x ?? 0 })}
+                          className={`w-full ${v ? "border-sea font-semibold text-sea" : ""}`}
+                        />
+                      )}
+                    </Cell>
+                  );
+                })}
+              </GridRow>
+              <GridRow label="Ad spend">
+                {months.map((m) => {
+                  const r = byMonth.get(m)!;
+                  return (
+                    <Cell key={m} actual={r.isActual}>
+                      <span className="num block text-center text-plum">{moneyK(r.adSpend)}</span>
                     </Cell>
                   );
                 })}
@@ -294,4 +369,35 @@ function GridRow({ label, children, strong }: { label: string; children: React.R
 
 function Cell({ children, actual }: { children: React.ReactNode; actual: boolean }) {
   return <td className={`px-1 py-1.5 ${actual ? "bg-sea-wash" : ""}`}>{children}</td>;
+}
+
+function ToolCard({
+  title,
+  body,
+  action,
+  onClick,
+  tone,
+}: {
+  title: string;
+  body: string;
+  action: string;
+  onClick: () => void;
+  tone: "sea" | "plum";
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`group flex flex-col items-start rounded-2xl border p-5 text-left transition-colors ${
+        tone === "sea" ? "border-sea/30 bg-sea-wash hover:border-sea" : "border-plum/30 bg-plum-wash hover:border-plum"
+      }`}
+    >
+      <span className="text-lg font-semibold">{title}</span>
+      <span className="mt-1 max-w-prose text-sm text-muted">{body}</span>
+      <span
+        className={`mt-4 rounded-full px-4 py-2 text-sm font-medium text-white ${tone === "sea" ? "bg-sea" : "bg-plum"}`}
+      >
+        {action}
+      </span>
+    </button>
+  );
 }

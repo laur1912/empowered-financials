@@ -24,7 +24,8 @@ export function NumField({
   disabled?: boolean;
   align?: "right" | "center";
 }) {
-  const show = (v: number | null | undefined) => (v == null ? "" : String(Math.round(v * 100) / 100));
+  const show = (v: number | null | undefined) =>
+    v == null ? "" : v.toLocaleString("en-US", { maximumFractionDigits: 2 });
   const [text, setText] = useState(show(value));
   useEffect(() => setText(show(value)), [value]);
 

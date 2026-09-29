@@ -230,11 +230,12 @@ export default function Planner() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-rule bg-paper">
+      <header className="border-b border-rule bg-paper shadow-[0_1px_0_rgba(34,56,74,0.04)]">
+        <div className="h-1 bg-gradient-to-r from-teal via-sea to-plum" aria-hidden />
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-3 px-4 py-3 sm:px-6">
           <div className="mr-auto">
-            <h1 className="text-lg font-semibold tracking-tight">Empowered Therapy</h1>
-            <p className="text-sm text-muted">Financial planner</p>
+            <h1 className="text-2xl leading-none">Empowered Therapy</h1>
+            <p className="eyebrow mt-1.5">Financial planner</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -257,7 +258,7 @@ export default function Planner() {
                   className="w-52 rounded-md border border-plum bg-paper px-2 py-1.5 text-sm"
                   onKeyDown={(e) => e.key === "Escape" && setNaming(null)}
                 />
-                <button className="rounded-md bg-plum px-3 py-1.5 text-sm font-medium text-white">
+                <button className="btn btn-xs btn-alt">
                   {naming === "new" ? "Create" : "Rename"}
                 </button>
                 <button type="button" onClick={() => setNaming(null)} className="text-sm text-muted hover:text-ink">
@@ -284,7 +285,7 @@ export default function Planner() {
                     setNameText(`${scenario.name} (copy)`);
                     setNaming("new");
                   }}
-                  className="rounded-md border border-plum px-2.5 py-1.5 text-sm font-medium text-plum hover:bg-plum-wash"
+                  className="btn btn-sm btn-ghost"
                 >
                   Save as new scenario
                 </button>
@@ -356,7 +357,7 @@ export default function Planner() {
               onClick={() => setYear(y)}
               aria-current={y === year ? "true" : undefined}
               className={`rounded-md px-3 py-1 text-sm font-medium ${
-                y === year ? "bg-ink text-white" : "text-muted hover:bg-paper hover:text-ink"
+                y === year ? "bg-teal-dk text-white" : "text-muted hover:bg-paper hover:text-ink"
               }`}
             >
               {y}
@@ -385,7 +386,7 @@ export default function Planner() {
               aria-selected={tab === t.id}
               onClick={() => setTab(t.id)}
               className={`-mb-px border-b-2 px-4 py-2 text-sm font-medium ${
-                tab === t.id ? "border-sea text-ink" : "border-transparent text-muted hover:text-ink"
+                tab === t.id ? "border-teal text-ink" : "border-transparent text-muted hover:text-ink"
               }`}
             >
               {t.label}

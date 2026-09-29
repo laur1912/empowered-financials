@@ -63,7 +63,7 @@ export default function PlanTab({
 
       <section aria-labelledby="levers" className="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,3fr)]">
         <div>
-          <h2 id="levers" className="text-lg font-semibold">
+          <h2 id="levers" className="text-2xl">
             Average sessions
           </h2>
           <p className="mt-1 max-w-prose text-sm text-muted">
@@ -122,7 +122,7 @@ export default function PlanTab({
         </div>
 
         <div>
-          <h2 className="text-lg font-semibold">Money per session</h2>
+          <h2 className="text-2xl">Money per session</h2>
           <div className="mt-5 grid gap-4">
             <Row label="Average revenue per session">
               <NumField
@@ -168,7 +168,7 @@ export default function PlanTab({
       </section>
 
       <section aria-labelledby="hiring">
-        <h2 id="hiring" className="text-lg font-semibold">
+        <h2 id="hiring" className="text-2xl">
           Hiring and headcount, {year}
         </h2>
         <p className="mt-1 max-w-prose text-sm text-muted">
@@ -181,7 +181,7 @@ export default function PlanTab({
           <p className="mt-3 text-sm text-plum">Every month in {year} has actual numbers, so there&apos;s nothing to plan here.</p>
         )}
 
-        <div className="mt-4 overflow-x-auto rounded-lg border border-rule bg-paper">
+        <div className="card mt-4 overflow-x-auto">
           <table className="w-full min-w-[900px] table-fixed border-collapse text-sm">
             <colgroup>
               <col className="w-44" />
@@ -387,14 +387,14 @@ function ToolCard({
   return (
     <button
       onClick={onClick}
-      className={`group flex flex-col items-start rounded-2xl border p-5 text-left transition-colors ${
-        tone === "sea" ? "border-sea/30 bg-sea-wash hover:border-sea" : "border-plum/30 bg-plum-wash hover:border-plum"
+      className={`group flex flex-col items-start rounded-[20px] border p-6 text-left transition-colors ${
+        tone === "sea" ? "border-teal/25 bg-sea-wash hover:border-teal" : "border-plum/25 bg-plum-wash hover:border-plum"
       }`}
     >
-      <span className="text-lg font-semibold">{title}</span>
+      <span className="display text-2xl">{title}</span>
       <span className="mt-1 max-w-prose text-sm text-muted">{body}</span>
       <span
-        className={`mt-4 rounded-full px-4 py-2 text-sm font-medium text-white ${tone === "sea" ? "bg-sea" : "bg-plum"}`}
+        className={`btn btn-sm mt-5 ${tone === "sea" ? "" : "btn-alt"}`}
       >
         {action}
       </span>

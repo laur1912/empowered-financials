@@ -82,9 +82,9 @@ export default function CostsTab(props: Props) {
           return (
             <article
               key={c.id}
-              className={`flex flex-col rounded-2xl border bg-paper p-5 ${isMarketing ? "border-plum/40" : "border-rule"}`}
+              className={`card flex flex-col p-6 ${isMarketing ? "ring-1 ring-plum/30" : ""}`}
             >
-              <h3 className="font-semibold">{c.title}</h3>
+              <h3 className="display text-xl">{c.title}</h3>
               <p className="text-sm text-muted">{c.blurb}</p>
               {c.id === "rates" ? (
                 <dl className="mt-4 grid grid-cols-2 gap-y-2 text-sm">
@@ -110,9 +110,7 @@ export default function CostsTab(props: Props) {
               )}
               <button
                 onClick={() => setPanel(c.id)}
-                className={`mt-5 self-start rounded-full px-4 py-2 text-sm font-medium ${
-                  isMarketing ? "bg-plum text-white hover:opacity-90" : "bg-sea-wash text-sea hover:bg-sea hover:text-white"
-                }`}
+                className={`btn btn-sm mt-5 self-start ${isMarketing ? "btn-alt" : ""}`}
               >
                 {c.action}
               </button>
@@ -205,7 +203,7 @@ function LinesPanel({
             detail="Follows the clients you need to recruit each month."
             total={adTotal}
             action={
-              <button onClick={openMarketing} className="rounded-full bg-plum px-3 py-1 text-xs font-medium text-white">
+              <button onClick={openMarketing} className="btn btn-xs btn-alt">
                 Review ad spend
               </button>
             }
@@ -230,11 +228,11 @@ function LinesPanel({
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
           placeholder={group === "corporatePayroll" ? "e.g. New clinical director" : "e.g. New software subscription"}
-          className="w-72 rounded-full border border-rule bg-paper px-4 py-2 text-sm"
+          className="w-72 rounded-[7px] border border-rule bg-paper px-4 py-2.5 text-sm"
         />
         <button
           disabled={!newName.trim()}
-          className="rounded-full bg-sea px-4 py-2 text-sm font-medium text-white disabled:opacity-40"
+          className="btn btn-sm"
         >
           Add {group === "otherRevenue" ? "revenue" : "cost"}
         </button>
@@ -315,7 +313,7 @@ function LineCard({
   }
 
   return (
-    <div className="rounded-xl border border-rule bg-paper px-5 py-4">
+    <div className="card px-5 py-4">
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
         <div className="min-w-48 flex-1">
           {renaming ? (
@@ -526,7 +524,7 @@ function MarketingPanel({ data, scenario, year, results, updatePlan, onClose, op
           />
           <button
             onClick={() => openTool("hiring")}
-            className="mt-2 rounded-2xl border border-plum/40 bg-plum-wash px-5 py-4 text-left hover:border-plum"
+            className="mt-2 rounded-[20px] border border-plum/30 bg-plum-wash px-5 py-4 text-left hover:border-plum"
           >
             <span className="block font-semibold text-plum">How much will my budget go up if I hire?</span>
             <span className="text-sm text-muted">Try a hire and see ad spend, pay, and profit month by month.</span>

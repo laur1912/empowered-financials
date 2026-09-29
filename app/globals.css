@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-fog: #f3f5f4;
+  /* Empowered Therapy brand (from empoweredtherapy.org) */
+  --color-fog: #f8f3ee; /* light sand page background */
+  --color-sand: #f2e6da;
   --color-paper: #ffffff;
-  --color-ink: #1f2b33;
-  --color-muted: #5e6b73;
-  --color-rule: #d9dfdc;
-  --color-sea: #28585e;
-  --color-sea-soft: #a9c4c1;
-  --color-sea-wash: #e6efee;
-  --color-plum: #6b4a8b;
-  --color-plum-wash: #efe9f5;
-  --color-gain: #2e7a4e;
-  --color-loss: #b0413a;
-  --font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-ink: #22384a; /* navy */
+  --color-muted: #4c6072; /* navy-soft */
+  --color-rule: rgba(34, 56, 74, 0.12);
+  --color-sea: #309e95; /* teal button */
+  --color-teal: #38a399;
+  --color-teal-dk: #1f5057;
+  --color-sea-soft: #9fd8d0;
+  --color-sea-wash: #e1fbf0; /* mint card */
+  --color-mint: #abffe5;
+  --color-plum: #3879a3; /* slate: the comparison / secondary accent */
+  --color-plum-wash: #e7f0f7;
+  --color-gain: #1f8a7f;
+  --color-loss: #c0563f;
+  --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "Lora", Georgia, serif;
 }
 
 html {
@@ -25,6 +31,95 @@ html {
 
 .num {
   font-variant-numeric: tabular-nums;
+}
+
+/* Headings use the site's serif */
+h1,
+h2,
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+}
+
+/* Small uppercase label with the site's teal rule */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1.5px;
+  background: var(--color-teal);
+  opacity: 0.6;
+}
+
+/* Buttons match the site's uppercase CTA */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  border-radius: 7px;
+  background: var(--color-sea);
+  color: #fff;
+  box-shadow: 0 14px 28px -14px rgba(48, 158, 149, 0.75);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.btn:hover:not(:disabled) {
+  background: var(--color-teal-dk);
+  transform: translateY(-1px);
+  box-shadow: 0 20px 34px -16px rgba(31, 80, 87, 0.7);
+}
+.btn:disabled {
+  opacity: 0.45;
+  box-shadow: none;
+}
+.btn-sm {
+  padding: 10px 18px;
+  font-size: 0.72rem;
+}
+.btn-xs {
+  padding: 7px 12px;
+  font-size: 0.66rem;
+  box-shadow: none;
+}
+.btn-alt {
+  background: var(--color-plum);
+  box-shadow: 0 14px 28px -14px rgba(56, 121, 163, 0.7);
+}
+.btn-alt:hover:not(:disabled) {
+  background: #2e6486;
+}
+.btn-ghost {
+  background: #fff;
+  color: var(--color-ink);
+  box-shadow: inset 0 0 0 1px var(--color-rule);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-sea-wash);
+  color: var(--color-teal-dk);
+}
+
+/* Cards share the site's soft teal shadow */
+.card {
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(34, 56, 74, 0.07);
+  box-shadow: 0 12px 32px -26px rgba(31, 80, 87, 0.55);
 }
 
 /* The accountant's double rule under a final total */

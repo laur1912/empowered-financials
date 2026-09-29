@@ -25,10 +25,10 @@ export default function Login({ configured }: { configured: boolean }) {
   }
 
   return (
-    <main className="min-h-screen grid place-items-center px-6">
-      <form onSubmit={submit} className="w-full max-w-sm">
-        <h1 className="text-2xl font-semibold tracking-tight">Empowered Therapy</h1>
-        <p className="mt-1 text-muted">Financial planner</p>
+    <main className="grid min-h-screen place-items-center bg-sand px-6">
+      <form onSubmit={submit} className="card w-full max-w-sm p-8">
+        <p className="eyebrow">Financial planner</p>
+        <h1 className="mt-3 text-4xl">Empowered Therapy</h1>
         {!configured ? (
           <p className="mt-8 text-loss">
             This site has no password yet. Add an APP_PASSWORD environment variable in Vercel, then redeploy.
@@ -44,12 +44,12 @@ export default function Login({ configured }: { configured: boolean }) {
               autoFocus
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-2 w-full rounded-md border border-rule bg-paper px-3 py-2"
+              className="mt-2 w-full rounded-[7px] border border-rule bg-paper px-3 py-2.5"
             />
             {error && <p className="mt-2 text-sm text-loss">{error}</p>}
             <button
               disabled={busy || !password}
-              className="mt-4 w-full rounded-md bg-sea px-4 py-2 font-medium text-white disabled:opacity-50"
+              className="btn mt-5 w-full"
             >
               {busy ? "Signing in…" : "Sign in"}
             </button>

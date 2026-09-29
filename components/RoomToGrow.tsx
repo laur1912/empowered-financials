@@ -159,8 +159,8 @@ export default function RoomToGrow({
         </section>
 
         <section aria-label="Answer" className="grid content-start gap-5">
-          <div className={`rounded-2xl border-l-4 p-6 ${toneClass}`} role="status">
-            <p className="text-2xl font-semibold tracking-tight">{verdict.title}</p>
+          <div className={`rounded-[20px] border-l-4 p-6 ${toneClass}`} role="status">
+            <p className="display text-3xl">{verdict.title}</p>
             <p className="mt-2 max-w-prose">{verdict.body}</p>
           </div>
 
@@ -171,7 +171,7 @@ export default function RoomToGrow({
             <Tile label="Profit once filled" value={`${money(valueFilled)}/mo`} hint={`${money(perClientProfit)} per client`} />
           </dl>
 
-          <div className="rounded-2xl bg-paper p-5">
+          <div className="card p-5">
             <p className="text-sm font-medium">Open spots if we don&apos;t hire</p>
             <div className="mt-3 flex h-28 items-end gap-1.5" role="img" aria-label="Open spots by month">
               {timeline.map((t, i) => {
@@ -208,16 +208,16 @@ export default function RoomToGrow({
 
           <div className="flex flex-wrap gap-3">
             {fillable > 0 && net > 0 && (
-              <button onClick={planFilling} className="rounded-full bg-sea px-4 py-2 text-sm font-medium text-white">
+              <button onClick={planFilling} className="btn btn-sm">
                 Add filling these spots to the plan
               </button>
             )}
             {hireMonthInPlan && net > 0 && (
-              <button onClick={planHire} className="rounded-full bg-plum px-4 py-2 text-sm font-medium text-white">
+              <button onClick={planHire} className="btn btn-sm btn-alt">
                 Plan a hire for {monthLabel(hireMonth!, "long")}
               </button>
             )}
-            <button onClick={openHiring} className="rounded-full border border-rule bg-paper px-4 py-2 text-sm font-medium">
+            <button onClick={openHiring} className="btn btn-sm btn-ghost">
               See what a hire costs
             </button>
           </div>

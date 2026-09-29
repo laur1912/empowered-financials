@@ -101,17 +101,17 @@ export default function BreakdownTab({
               const all = Object.fromEntries(defs.filter((d) => d.expandable).map((d) => [d.expandable!, true]));
               setOpen(Object.keys(open).some((k) => open[k]) ? {} : all);
             }}
-            className="rounded-md border border-rule bg-paper px-3 py-1.5 text-sm hover:border-sea"
+            className="btn btn-sm btn-ghost"
           >
             {Object.values(open).some(Boolean) ? "Collapse all" : "Expand all"}
           </button>
-          <button onClick={downloadCsv} className="rounded-md border border-rule bg-paper px-3 py-1.5 text-sm hover:border-sea">
+          <button onClick={downloadCsv} className="btn btn-sm btn-ghost">
             Download CSV
           </button>
         </div>
       </div>
 
-      <div className="mt-4 overflow-x-auto rounded-lg border border-rule bg-paper">
+      <div className="card mt-4 overflow-x-auto">
         <table className="w-full min-w-[1300px] border-collapse text-sm">
           <thead>
             <tr className="border-b border-rule">

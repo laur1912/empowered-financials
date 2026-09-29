@@ -59,7 +59,7 @@ export default function ActualsTab({
                   onClick={() => setMonth(m)}
                   aria-current={m === month ? "true" : undefined}
                   className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-sm ${
-                    m === month ? "bg-ink text-white" : "hover:bg-paper"
+                    m === month ? "bg-teal-dk text-white" : "hover:bg-paper"
                   }`}
                 >
                   <span>{monthLabel(m, "long")}</span>
@@ -76,10 +76,10 @@ export default function ActualsTab({
       </div>
 
       <div className="min-w-0">
-        <h2 className="text-xl font-semibold">{monthLabel(month, "long")}</h2>
+        <h2 className="text-3xl">{monthLabel(month, "long")}</h2>
 
         {!actual ? (
-          <div className="mt-4 max-w-prose rounded-lg border border-dashed border-sea bg-paper p-6">
+          <div className="card mt-4 max-w-prose p-6">
             <p>
               This month is still a forecast. Record the actual numbers once the month is over. The form starts with the
               forecast so you only change what was different.
@@ -89,7 +89,7 @@ export default function ActualsTab({
             </p>
             <button
               onClick={() => update((d) => closeMonth(d, plan, month))}
-              className="mt-4 rounded-md bg-sea px-4 py-2 font-medium text-white"
+              className="btn mt-5"
             >
               Record actuals for {monthLabel(month, "long")}
             </button>
@@ -213,7 +213,7 @@ export default function ActualsTab({
 
 function Fieldset({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <fieldset className="rounded-lg border border-rule bg-paper px-5 pb-2 pt-3">
+    <fieldset className="card px-5 pb-2 pt-3">
       <legend className="px-1 text-sm font-semibold">{title}</legend>
       <div className="divide-y divide-rule">{children}</div>
     </fieldset>

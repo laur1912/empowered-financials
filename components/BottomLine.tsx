@@ -44,18 +44,18 @@ export default function BottomLine({
   return (
     <section aria-label={`${year} bottom line`} className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
       <div>
-        <p className="text-sm text-muted">
+        <p className="eyebrow">
           {year} profit (EBITDA) · {scenarioName}
         </p>
-        <p className="mt-1 inline-block">
-          <span className="bottom-line num text-5xl font-bold tracking-tight sm:text-6xl">{money(summary.ebitda)}</span>
+        <p className="mt-2 inline-block">
+          <span className="bottom-line display num text-5xl sm:text-7xl">{money(summary.ebitda)}</span>
         </p>
         {d && (
-          <p className={`mt-3 text-sm font-medium ${d.ebitda >= 0 ? "text-gain" : "text-loss"}`}>
+          <p className={`mt-5 text-sm font-medium ${d.ebitda >= 0 ? "text-gain" : "text-loss"}`}>
             {signed(d.ebitda, money)} compared with {baselineName}
           </p>
         )}
-        <p className="mt-2 text-sm text-muted">{status}</p>
+        <p className={`${d ? "mt-1" : "mt-5"} text-sm text-muted`}>{status}</p>
 
         <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
           <Stat label="Margin" value={pct(summary.margin)} delta={d && Math.abs(d.margin) >= 0.0005 ? signed(d.margin * 100, (x) => `${x.toFixed(1)} pts`) : null} good={d ? d.margin >= 0 : true} />

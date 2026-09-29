@@ -137,7 +137,7 @@ export default function HiringCalculator({
         </select>
       </div>
 
-      <p className="mt-6 max-w-3xl text-2xl font-semibold leading-snug tracking-tight">
+      <p className="display mt-6 max-w-3xl text-3xl leading-snug">
         Ad spend goes up about <span className="num text-plum">{money(firstAd)}</span> a month for the first{" "}
         {rampAds.length} months while {who} fill{n === 1 ? "s" : ""} up
         {!calc.everNegative ? (
@@ -166,7 +166,7 @@ export default function HiringCalculator({
       </dl>
       <p className="mt-2 text-sm text-muted">Totals for the first 12 months.</p>
 
-      <section className="mt-8 rounded-2xl bg-paper p-5" aria-label="Month by month">
+      <section className="card mt-8 p-5" aria-label="Month by month">
         <div className="grid grid-cols-[7rem_repeat(12,minmax(0,1fr))] items-end gap-1.5 text-xs">
           <span className="self-center text-muted">Ad spend</span>
           {calc.rows.map((r) => (
@@ -216,7 +216,7 @@ export default function HiringCalculator({
             });
             setAdded(true);
           }}
-          className="rounded-full bg-sea px-5 py-2.5 font-medium text-white hover:opacity-90"
+          className="btn"
         >
           Add {n === 1 ? "this hire" : "these hires"} to {scenario.name}
         </button>

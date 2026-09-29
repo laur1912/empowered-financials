@@ -48,18 +48,18 @@ export default function Sheet({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="sheet-panel relative flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-2xl bg-fog shadow-2xl outline-none sm:max-h-none sm:rounded-2xl"
+        className="sheet-panel relative flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-t-[20px] bg-fog shadow-2xl outline-none sm:max-h-none sm:rounded-[20px]"
       >
         <header className="flex flex-wrap items-start justify-between gap-4 border-b border-rule bg-paper px-5 py-4 sm:px-8">
           <div>
-            <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+            <h2 className="text-2xl">{title}</h2>
             {subtitle && <div className="mt-0.5 text-sm text-muted">{subtitle}</div>}
           </div>
           <div className="flex items-center gap-4">
             {aside}
             <button
               onClick={onClose}
-              className="rounded-full bg-ink px-4 py-1.5 text-sm font-medium text-white hover:bg-sea"
+              className="btn btn-sm"
             >
               Done
             </button>
